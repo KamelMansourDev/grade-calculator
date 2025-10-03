@@ -51,21 +51,9 @@
   button:hover {
     background-color: #218838;
   }
-  .green {
-    color: green;
+  #average {
     font-weight: bold;
-  }
-  .red {
-    color: red;
-    font-weight: bold;
-  }
-  @media (max-width: 600px) {
-    input[type=number] {
-      width: 100%;
-    }
-    table, th, td {
-      font-size: 14px;
-    }
+    color: #dc3545;
   }
 </style>
 </head>
@@ -83,56 +71,56 @@
   </tr>
   <tr>
     <td>عقود خاصة2</td>
-    <td><input type="number" step="0.01"></td>
-    <td><input type="number" step="0.01"></td>
+    <td><input type="number" step="0.01" max="20"></td>
+    <td><input type="number" step="0.01" max="20"></td>
     <td class="finalMark"></td>
     <td>2</td>
   </tr>
   <tr>
     <td>أوراق تجارية</td>
-    <td><input type="number" step="0.01"></td>
-    <td><input type="number" step="0.01"></td>
+    <td><input type="number" step="0.01" max="20"></td>
+    <td><input type="number" step="0.01" max="20"></td>
     <td class="finalMark"></td>
     <td>2</td>
   </tr>
   <tr>
     <td>قانون دولي خاص2</td>
-    <td><input type="number" step="0.01"></td>
-    <td><input type="number" step="0.01"></td>
+    <td><input type="number" step="0.01" max="20"></td>
+    <td><input type="number" step="0.01" max="20"></td>
     <td class="finalMark"></td>
     <td>1</td>
   </tr>
   <tr>
     <td>قانون البنوك</td>
-    <td><input type="number" step="0.01"></td>
+    <td><input type="number" step="0.01" max="20"></td>
     <td></td>
     <td class="finalMark"></td>
     <td>1</td>
   </tr>
   <tr>
     <td>القانون البحري</td>
-    <td><input type="number" step="0.01"></td>
+    <td><input type="number" step="0.01" max="20"></td>
     <td></td>
     <td class="finalMark"></td>
     <td>1</td>
   </tr>
   <tr>
     <td>قانون التأمين</td>
-    <td><input type="number" step="0.01"></td>
+    <td><input type="number" step="0.01" max="20"></td>
     <td></td>
     <td class="finalMark"></td>
     <td>1</td>
   </tr>
   <tr>
     <td>ملكية فكرية</td>
-    <td><input type="number" step="0.01"></td>
+    <td><input type="number" step="0.01" max="20"></td>
     <td></td>
     <td class="finalMark"></td>
     <td>1</td>
   </tr>
   <tr>
     <td>مصطلحات أجنبية</td>
-    <td><input type="number" step="0.01"></td>
+    <td><input type="number" step="0.01" max="20"></td>
     <td></td>
     <td class="finalMark"></td>
     <td>1</td>
@@ -158,6 +146,10 @@ function calculateAverage() {
 
     let lectureMark = parseFloat(lectureInput?.value) || 0;
     let tdMark = parseFloat(tdInput?.value);
+
+    if (lectureMark > 20) lectureMark = 20;
+    if (!isNaN(tdMark) && tdMark > 20) tdMark = 20;
+
     let finalMark;
 
     if (!isNaN(tdMark)) {
@@ -167,18 +159,13 @@ function calculateAverage() {
     }
 
     resultCell.textContent = finalMark.toFixed(2);
-    resultCell.classList.remove("green", "red");
-    resultCell.classList.add(finalMark >= 10 ? "green" : "red");
 
     totalPoints += finalMark * coefficient;
     totalCoefficients += coefficient;
   }
 
   const average = totalPoints / totalCoefficients;
-  const avgElement = document.getElementById('average');
-  avgElement.textContent = average.toFixed(2);
-  avgElement.classList.remove("green", "red");
-  avgElement.classList.add(average >= 10 ? "green" : "red");
+  document.getElementById('average').textContent = average.toFixed(2);
 }
 </script>
 

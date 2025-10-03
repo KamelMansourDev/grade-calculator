@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدخل إلى منهجية تحرير العقود الاقتصادية</title>
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d5a8c;
+            --accent-color: #e53e3e;
+            --light-color: #f7fafc;
+            --dark-color: #2d3748;
+            --text-color: #2d3748;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .university-logo {
+            max-width: 120px;
+            margin: 0 auto 1rem;
+            display: block;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .course-info {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .authors {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .author {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(5px);
+        }
+        
+        .academic-year {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+        }
+        
+        .nav-link {
+            padding: 0.5rem 1.5rem;
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-color);
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        ul {
+            margin: 1rem 0;
+            padding-right: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-right: 4px solid var(--accent-color);
+            margin: 1.5rem 0;
+        }
+        
+        .problematic {
+            background-color: #fff5f5;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-right: 4px solid var(--accent-color);
+            margin: 1.5rem 0;
+            font-weight: 600;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .example-card {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-top: 4px solid var(--secondary-color);
+            transition: var(--transition);
+        }
+        
+        .example-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .example-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Download Section */
+        .download-section {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius);
+        }
+        
+        .download-section h2 {
+            color: white;
+            border-bottom: none;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-section a {
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #4a5568;
+            color: #a0aec0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .authors {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-container {
+                flex-wrap: wrap;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animation for sections */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content" style="text-align: center;">
+            <img src="../معدل الجامعة/images.jfif" height="100px" width="100px" alt="img">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="white" stroke-width="3"/>
+                <path d="M30,30 L70,30 L70,70 L30,70 Z" fill="none" stroke="white" stroke-width="2"/>
+                <path d="M40,40 L60,40 L60,60 L40,60 Z" fill="none" stroke="white" stroke-width="2"/>
+                <text x="50" y="85" text-anchor="middle" fill="white" font-size="10">جامعة الجزائر 1</text>
+            </svg>
+            <h1>مدخل إلى منهجية تحرير العقود الاقتصادية</h1>
+            <p class="course-info">كلية الحقوق - جامعة الجزائر 1</p>
+            <p class="academic-year">السنة الجامعية: 2025-2026</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#intro" class="nav-link">المقدمة</a>
+            <a href="#framework" class="nav-link">الإطار النظري</a>
+            <a href="#methodology" class="nav-link">المنهجية العملية</a>
+            <a href="#conclusion" class="nav-link">الخاتمة</a>
+            <a href="#sources" class="nav-link">المصادر</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="intro" class="section fade-in">
+            <h2>المقدمة</h2>
+            <p>بسم الله الرحمن الرحيم، والصلاة والسلام على أشرف المرسلين. تُعد العقود الاقتصادية أداة محورية في الحياة التجارية، غير أن نجاحها لا يتوقف على المبادئ النظرية فحسب، بل على الكيفية التي تُصاغ بها وتُدار تفاصيلها العملية. فمن التفاوض الأولي إلى لحظة التوقيع، تظل كل خطوة محكومة بدقة قانونية قد تصنع الفارق بين عقد متوازن يحمي الحقوق، وآخر مليء بالثغرات يفتح الباب للنزاعات. لذلك تكتسب دراسة المنهجية العملية لتحرير العقود الاقتصادية أهميتها بوصفها البوابة نحو عقود رصينة وفعّالة.</p>
+            
+            <div class="problematic">
+                <strong>الإشكالية:</strong> كيف تضمن المنهجية العملية صياغة عقود اقتصادية متوازنة وفعّالة؟
+            </div>
+        </section>
+
+        <section id="framework" class="section fade-in">
+            <h2>المبحث الأول: الإطار النظري للعقود الاقتصادية</h2>
+            <p>هذا المبحث يضع الأساس لفهم طبيعة العقود الاقتصادية والمبادئ التي ترتكز عليها.</p>
+            
+            <h3>المطلب الأول: مفهوم العقود الاقتصادية</h3>
+            <p>العقود الاقتصادية هي اتفاقات مُلزمة قانونًا تُبرم بين طرفين أو أكثر بهدف تنظيم معاملة ذات طابع اقتصادي أو تجاري. تتميز هذه العقود بأنها تنشئ أو تعدل أو تنهي التزامات وحقوقًا متبادلة ذات قيمة مالية. على عكس العقود المدنية البسيطة، غالبًا ما تتسم العقود الاقتصادية بالتعقيد الفني والمالي وتخضع لأطر تنظيمية خاصة.</p>
+            
+            <h3>الخصائص الرئيسية للعقود الاقتصادية</h3>
+            <ul>
+                <li><strong>الطابع المالي:</strong> يتميز العقد الاقتصادي بكونه موجهاً أساساً لتحقيق منفعة مالية أو ربح اقتصادي.</li>
+                <li><strong>الطابع التجاري/المهني:</strong> أطراف العقود الاقتصادية غالباً ما يكونون من الفاعلين الاقتصاديين كالتجار، الشركات التجارية، أو المؤسسات الاستثمارية.</li>
+                <li><strong>التعقيد الفني:</strong> العقود الاقتصادية ليست مجرد اتفاقات بسيطة، بل تحتوي عادة على بنود تقنية ومالية وقانونية متشابكة.</li>
+                <li><strong>موازنة المخاطر:</strong> من أبرز ما يميز العقود الاقتصادية هو إدراج آليات واضحة لتوزيع المخاطر المحتملة بين الأطراف المتعاقدة.</li>
+            </ul>
+            
+            <h3>أمثلة على العقود الاقتصادية</h3>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h4>عقود البيع التجاري الدولي</h4>
+                    <p>تنظم عمليات تبادل السلع بين أطراف من دول مختلفة</p>
+                </div>
+                <div class="example-card">
+                    <h4>عقود التوريد</h4>
+                    <p>تهدف إلى توفير سلع أو مواد بشكل دوري لشركات أو مؤسسات</p>
+                </div>
+                <div class="example-card">
+                    <h4>عقود الامتياز التجاري</h4>
+                    <p>تمنح حق استغلال علامة تجارية أو نموذج تجاري معين</p>
+                </div>
+                <div class="example-card">
+                    <h4>عقود المقاولات والإنشاءات</h4>
+                    <p>تنظم علاقة المقاول برب العمل في مشاريع البناء الكبرى</p>
+                </div>
+            </div>
+            
+            <h3>المطلب الثاني: المبادئ الحاكمة للعقود الاقتصادية</h3>
+            <p>تقوم العقود الاقتصادية على جملة من المبادئ القانونية الراسخة التي تهدف إلى ضمان استقرار المعاملات وتحقيق العدالة التعاقدية بين الأطراف.</p>
+            
+            <div class="highlight">
+                <h4>مبدأ سلطان الإرادة</h4>
+                <p>يعد من أبرز مظاهر الحرية التعاقدية في القانون الخاص. بموجبه، يتمتع الأطراف بسلطة واسعة في تحديد مضمون العقد وشروطه وفقاً لما يحقق مصالحهم المشتركة.</p>
+            </div>
+            
+            <div class="highlight">
+                <h4>مبدأ القوة الملزمة للعقد</h4>
+                <p>يجسد القاعدة الذهبية المعروفة بعبارة: "العقد شريعة المتعاقدين". يكرس الاستقرار التعاقدي ويضمن الثقة في المعاملات الاقتصادية.</p>
+            </div>
+            
+            <div class="highlight">
+                <h4>مبدأ حسن النية</h4>
+                <p>يفرض على الأطراف واجباً قانونياً وأخلاقياً بالتصرف بنزاهة وصدق، ليس فقط عند تنفيذ العقد، وإنما في جميع مراحله.</p>
+            </div>
+            
+            <div class="highlight">
+                <h4>مبدأ توازن الالتزامات</h4>
+                <p>يهدف إلى منع اختلال التوازن العقدي بين الأطراف، خصوصاً في عقود الإذعان حيث يفرض طرف قوي شروطاً مجحفة على الطرف الأضعف.</p>
+            </div>
+        </section>
+
+        <section id="methodology" class="section fade-in">
+            <h2>المبحث الثاني: المنهجية العملية لتحرير العقود الاقتصادية</h2>
+            <p>ينتقل هذا الجزء من المستوى النظري إلى المستوى التطبيقي، حيث يتناول الخطوات العملية التي يجب اتباعها من أجل صياغة عقد اقتصادي ناجح، يحقق التوازن بين مصالح الأطراف ويضمن الأمن التعاقدي.</p>
+            
+            <h3>المطلب الأول: مرحلة التفاوض والإعداد التمهيدي</h3>
+            <p>يُعرَّف التفاوض بأنّه عملية تواصل متبادلة بين طرفين أو أكثر، تهدف إلى التوصل لاتفاق يحقق مصالح متبادلة، من خلال البحث عن حلول وسط بين ما يسعى إليه كل طرف وبين ما يمكن للطرف الآخر قبوله.</p>
+            
+            <h4>خطوات مرحلة التفاوض:</h4>
+            <ul>
+                <li><strong>تحديد الأهداف والمصالح:</strong> وضع ما يسعى إلى تحقيقه من وراء العقد بشكل واضح</li>
+                <li><strong>التحري النافي للجهالة:</strong> فحص شامل للطرف الآخر قبل الالتزام التعاقدي</li>
+                <li><strong>الاتفاقات التمهيدية:</strong> مثل خطاب النوايا، مذكرة التفاهم، واتفاقية السرية</li>
+                <li><strong>مهارات التفاوض:</strong> التواصل الفعّال، حل المشكلات، تحقيق المنفعة المتبادلة، إدارة الوقت</li>
+            </ul>
+            
+            <h3>المطلب الثاني: الصياغة العملية والتقنيات والرقابة</h3>
+            <p>تمثل هذه المرحلة الانتقال من مجرد تفاهمات واتفاقات مبدئية إلى <strong>نص قانوني ملزم</strong> ودقيق.</p>
+            
+            <h4>تقنيات الصياغة:</h4>
+            <ul>
+                <li><strong>الوضوح والدقة:</strong> صياغة بنود العقد بلغة واضحة، بسيطة، ومباشرة</li>
+                <li><strong>الشمولية:</strong> تغطية كافة جوانب الاتفاق، بما في ذلك الالتزامات الرئيسية والفرعية</li>
+                <li><strong>الهيكلة المنطقية:</strong> تنظيم العقد وفق تسلسل منطقي عبر تقسيمه إلى أبواب أو فصول</li>
+            </ul>
+            
+            <h4>البنود الأساسية في العقد:</h4>
+            <ul>
+                <li>الديباجة</li>
+                <li>التعريفات</li>
+                <li>نطاق العقد</li>
+                <li>المقابل المالي</li>
+                <li>المدة والإنهاء</li>
+                <li>السرية</li>
+                <li>القوة القاهرة</li>
+                <li>القانون الواجب التطبيق وتسوية النزاعات</li>
+            </ul>
+            
+            <h4>الرقابة والمراجعة:</h4>
+            <ul>
+                <li><strong>المراجعة القانونية:</strong> التأكد من مطابقة العقد للقانون الوطني والقواعد الدولية</li>
+                <li><strong>المراجعة المالية:</strong> تقييم الالتزامات المالية الناشئة عن العقد</li>
+                <li><strong>التدقيق المشترك:</strong> تعيين كل طرف لفريقه من الخبراء لإجراء مراجعة متوازية</li>
+                <li><strong>ضمان التنفيذ:</strong> التأكد من أن بنود العقد قابلة للنفاذ أمام الجهات المختصة</li>
+            </ul>
+        </section>
+
+        <section id="conclusion" class="section fade-in">
+            <h2>الخاتمة</h2>
+            <p>يتبين مما سبق أنّ تحرير العقود الاقتصادية لا يقتصر على كونه عملية تقنية لصياغة نصوص مكتوبة، وإنما يمثل مسارًا متكاملًا يجمع بين البعد القانوني والبعد الاقتصادي. فهو يجمع بين الفهم الدقيق للنصوص التشريعية والقدرة على استيعاب خصوصيات الواقع التجاري والاقتصادي، إلى جانب ما يتطلبه من كفاءة في التفاوض ودقة في الصياغة. ومن ثمّ، فإن العقد المحكم يعدّ الأداة القانونية الأساسية التي تكفل حماية الحقوق وتحقيق التوازن بين الالتزامات، فضلًا عن كونه ركيزة أساسية في بناء الثقة واستقرار المعاملات التجارية والاستثمارية.</p>
+        </section>
+
+        <section id="sources" class="section fade-in">
+            <h2>قائمة المصادر والمراجع</h2>
+            
+            <h3>المصادر</h3>
+            <ul>
+                <li>الأمر رقم 75-58 المؤرخ في 20 رمضان عام 1395 الموافق 26 سبتمبر سنة 1975، المتضمن القانون المدني، المعدل والمتمم</li>
+                <li>الأمر رقم 75-59 المؤرخ في 20 رمضان عام 1395 الموافق 26 سبتمبر سنة 1975، المتضمن القانون التجاري، المعدل والمتمم</li>
+                <li>اتفاقية الأمم المتحدة بشأن عقود البيع الدولي للبضائع (اتفاقية فيينا لسنة 1980)</li>
+                <li>مبادئ اليونيدروا بشأن العقود التجارية الدولية، 2004</li>
+            </ul>
+            
+            <h3>المراجع</h3>
+            <ul>
+                <li>عبد الرزاق السنهوري، الوسيط في شرح القانون المدني، دار النهضة العربية، القاهرة</li>
+                <li>عبد القادر العرعاري، القانون التجاري: نظرية الأعمال التجارية والتاجر، دار أبي رقراق، الرباط</li>
+                <li>عكاشة عبد العال، القانون التجاري الجزائري، دار الجامعة الجديدة، الإسكندرية</li>
+                <li>أحمد شوقي محمد، العقود التجارية الدولية، دار الفكر الجامعي، الإسكندرية</li>
+                <li>علي البارودي، مبادئ القانون التجاري، دار الكتب القانونية، القاهرة</li>
+            </ul>
+        </section>
+
+        <section class="download-section fade-in">
+            <h2>تحميل البحث الكامل</h2>
+            <p>يمكنك تحميل نسخة كاملة من البحث بصيغة PDF</p>
+            <a href="منهجية تحرير العقود الاقتصادية.pdf" download="منهجية_تحرير_العقود_الاقتصادية.pdf" class="download-btn">تحميل البحث</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>جامعة الجزائر 1</h3>
+                <ul>
+                    <li><a href="#">كلية الحقوق</a></li>
+                    <li><a href="#">البرامج الأكاديمية</a></li>
+                    <li><a href="#">البحث العلمي</a></li>
+                    <li><a href="#">الاتصال بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>موارد إضافية</h3>
+                <ul>
+                    <li><a href="#">مكتبة الجامعة</a></li>
+                    <li><a href="#">المجلات العلمية</a></li>
+                    <li><a href="#">الندوات والمؤتمرات</a></li>
+                    <li><a href="#">مركز الدراسات القانونية</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#intro">المقدمة</a></li>
+                    <li><a href="#framework">الإطار النظري</a></li>
+                    <li><a href="#methodology">المنهجية العملية</a></li>
+                    <li><a href="#sources">المصادر والمراجع</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2025 جامعة الجزائر 1 - كلية الحقوق. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Add active class to navigation links based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
